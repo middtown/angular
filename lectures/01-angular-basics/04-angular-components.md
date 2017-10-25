@@ -123,17 +123,9 @@ The scope of an instance of this class will serve as the **view model** for our 
 
 ![Angular 2 Components](https://angular.io/generated/images/guide/architecture/component-databinding.png)
 
-The last file of interest here is `app.module.ts`.
-- Here, our app component is neatly packaged up to be exported and then bootstrapped - it's a long file, but the last two lines are the important ones.
+The last file of interest here is `app.module.ts`. This defines how to assemble the application. Not including the opening import statements, our pokemon application's `app.module.ts` file looks like this:
 
 ```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-
-import { AppComponent } from './app.component';
-
 @NgModule({
   declarations: [
     AppComponent
@@ -149,9 +141,16 @@ import { AppComponent } from './app.component';
 export class AppModule { }
 ```
 
-That's it! We've reviewed all of the working parts of 95 percent of Angular components. Our first component may be exceedingly simple, but we'll add more spice to our components in the following sections.
+Breaking this down a bit:
+
+- `@NgModule` — this defines how to compile and launch the application.
+- `imports` — this defines what the application needs to run in a browser (for example, this application has forms in it, so we need FormsModule)
+- `declarations` — this defines the application's components. We currently only have the default AppComponent, but when we make more complex applications with multiple components, those components would be added to this list as well.
+- `bootstrap` — this defines which is the root component (which one should be run first).
 
 ### Code-Along: Our Second Component
+
+That's it! We've reviewed all of the working parts of 95 percent of Angular components.
 
 Let's work together to add a second component, `MasterSword`, to our fledgling app from earlier. The Angular CLI makes this easy.
 
@@ -163,7 +162,7 @@ In your terminal, in the root of this application directory (`src/app`), type:
 ng generate component master-sword
 ```
 
-Note: You could also create a component with shorthand: `ng g c ___`.
+> Note: You could also create a component with shorthand: `ng g c master-sword`.
 
 Your console output should look like this:
 

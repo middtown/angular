@@ -93,39 +93,55 @@ let password = getPassword('false'); // throws: error TS2345: Argument of type "
 The basic files in Angular are:
 - `app.component.html`
   - This is where you define what will appear on the screen. For example:
-  ```html
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  ```
+```html
+<h1>
+  Welcome to {{title}}!
+</h1>
+```
 
 - `app.component.ts`
   - This is where you define the logic for your app - where you write all your TypeScript. For example,
-  ```js
-  export class AppComponent {
-    title = 'app';
-    everySecond() { console.log('another second'); }
-  }
-  ```
+```js
+export class AppComponent {
+  title = 'app';
+  everySecond() { console.log('another second'); }
+}
+```
 
 - `app.module.ts`
   - This is what ties your application together. For example:
-  ```js
-  @NgModule({  // This defines the module
-    declarations: [ // This lists the components in your application. Each time you make a new component, you add it here
-      AppComponent
-    ],
-    imports: [  // This defines libraries that your components depend on. We have a form on the screen, so we need the forms library from Angular.
-      BrowserModule,
-      FormsModule
-    ],
-    providers: [], // We'll go over this in a later lesson!
-    bootstrap: [AppComponent] // This ties the whole component together, saying "Here is everything for this component"
-  })
-  export class AppModule { } // This makes your component available for other files to use (like displaying it in `index.html`)
+```js
+@NgModule({  // This defines the module
+  declarations: [ // This lists the components in your application. Each time you make a new component, you add it here
+    AppComponent
+  ],
+  imports: [  // This defines libraries that your components depend on. We have a form on the screen, so we need the forms library from Angular.
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [], // We'll go over this in a later lesson!
+  bootstrap: [AppComponent] // This ties the whole component together, saying "Here is everything for this component"
+})
+export class AppModule { } // This makes your component available for other files to use (like displaying it in index.html)
 ```
 
 **Note** Every new component you make will come with its own `component.html` and `.component.ts` file. You can make more files when you need them, like if you make a service.
+
+
+
+## Angular Punctuation
+
+In Angular, there is quite a lot of punctuation. This is some of what you'll see as we go through these lessons. Don't worry about memorizing this - it's just a reference!
+
+Here is a quick overview of what it all means:
+
+![](images/punctuation1.png)
+
+![](images/punctuation2.png)
+
+Sometimes, there are properties without the `[]`s around them. Whether or not a property has `[]` determines if Angular evaluates the expression in Javascript or not. If there are no `[]`, Angular simply sees the property as a string. For example:
+
+![](images/punctuation3.png)
 
 
 ## Advice and Words of Encouragement

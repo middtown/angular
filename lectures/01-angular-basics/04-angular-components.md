@@ -69,11 +69,16 @@ This component creates what we see.
 
 Besides the module file, which can be unique to the root component, the Angular 2 development team wants **all of our components to be a subset of this structure**.
 
-We'll put all of the styles that pertain to our component in `app.component.css`. Sick of namespacing your styles to avoid collisions? Angular 2 has you covered — these styles **are scoped exclusively to its component.** (Right now, we only have the `App` component - but later, we'll have more!)
+#### `app.component.css`
 
-All of our unit tests for the component will live in `app.component.spec.ts`. We'll dive into testing a little later, but for now, just know that Angular 2 natively supports the Jasmine testing framework.
+- We'll put all of the styles that pertain to our component in here
+- Sick of namespacing your styles to avoid collisions? Angular 2 has you covered — these styles **are scoped exclusively to its component.** (Right now, we only have the `App` component - but later, we'll have more!)
 
-With `app.component.html`, we have our Angular template:
+#### `app.component.spec.ts`
+All of our unit tests for the component will live in . We'll dive into testing a little later, but for now, just know that Angular 2 natively supports the Jasmine testing framework.
+
+####  `app.component.html`
+We have our Angular template - what will be displayed on the screen to the user.
 
 ```html
   <h1>
@@ -81,7 +86,9 @@ With `app.component.html`, we have our Angular template:
   </h1>
 ```
 
-As you saw, the values in brackets will be replaced by values in our next file, `app.component.ts`.
+#### `app.component.ts`
+
+First, this defines that variable `title` which we use in `app.component.html`
 
 ```typescript
 @Component({
@@ -94,25 +101,23 @@ export class AppComponent {
 }
 ```
 
-What else is in this file?
+What else is in `app.component.ts`?
 
 - Here we see the definition of our component class, as well as our first use of a **decorator**, namely `@Component`.
   - Statements that look like @SomeName are called decorators. Decorators are an extension to JavaScript. Decorators let programmers modify and/or tag methods, classes, properties and parameters. Here, we're tagging these properties as a Component.
 - Our component's **selector** is the name of the HTML element we use to summon the component in our templates.
   - Thus, this component is saying "Find `<app-root>` in the HTML file, and put this there."
   - If you look at your `index.html` file, you'll see:
+    ```html
+    <body>
+      <app-root></app-root>
+    </body>
+    ```
+The `index.html` file is calling our component using the selector defined in `app.component.ts`
 
-```html
-<body>
-  <app-root></app-root>
-</body>
-```
-
-That's our component!
-
-The next two properties of our component's decorator argument are relative paths to the template and the component's style sheet.
-- `templateUrl: './app.component.html'`
-- `styleUrls: ['./app.component.css']`
+- The next two properties of our component's decorator argument are relative paths to the template and the component's style sheet.
+  - `templateUrl: './app.component.html'`
+  - `styleUrls: ['./app.component.css']`
 
 These metadata properties are added to our component class at run time.
   - For a full list of metadata properties that our component decorator recognizes, [check out the documentation](https://angular.io/docs/ts/latest/api/core/index/Component-decorator.html).
@@ -123,7 +128,8 @@ The scope of an instance of this class will serve as the **view model** for our 
 
 ![Angular 2 Components](https://angular.io/generated/images/guide/architecture/component-databinding.png)
 
-The last file of interest here is `app.module.ts`. This defines how to assemble the application. Not including the opening import statements, our pokemon application's `app.module.ts` file looks like this:
+#### `app.module.ts`
+This defines how to assemble the application. Not including the opening import statements, our pokemon application's `app.module.ts` file looks like this:
 
 ```typescript
 @NgModule({
@@ -148,7 +154,7 @@ Breaking this down a bit:
 - `declarations` — this defines the application's components. We currently only have the default AppComponent, but when we make more complex applications with multiple components, those components would be added to this list as well.
 - `bootstrap` — this defines which is the root component (which one should be run first).
 
-### Code-Along: Our Second Component
+## Code-Along: Our Second Component
 
 That's it! We've reviewed all of the working parts of 95 percent of Angular components.
 

@@ -276,7 +276,7 @@ In `src/app/dog/dog.component.ts`
 ```javascript
 export class DogComponent implements OnInit {
 
-  dogName = "Fido";
+  dogName: string = "Fido";
 
   ...
 }

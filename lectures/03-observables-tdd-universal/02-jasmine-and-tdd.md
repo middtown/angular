@@ -340,7 +340,7 @@ Write the code that passes the specifications above.
 
 <!-- Half-mast -->
 
-Imagine we want the `eat` method to behave differently in different contexts. For example, if the dog is not hungry and has a `hunger_level` of `0`, we don't want the `eat` method to continue decrementing. In order to set up different scenarios or contexts in our specifications, we can use different `describe` blocks.
+Imagine we want the `eat` method to behave differently in different contexts. For example, if the dog is not hungry and has a `hungerLevel` of `0`, we don't want the `eat` method to continue decrementing. In order to set up different scenarios or contexts in our specifications, we can use different `describe` blocks.
 
 `dog.component.spec.ts`
 
